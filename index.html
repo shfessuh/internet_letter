@@ -1,127 +1,95 @@
-<!DOCTYPE html>
-<!-- https://www.tiny.cloud/blog/css-glitch-effect/ -->
 <html lang="en">
 <head>
-  <style>
-    
-    body {
-      background-color: #7d7050;
-      background-image: radial-gradient(circle, #f3e4cb, #e3c69f, #d5a370, #b87d46,#b87a40);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start; 
-      height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Chest</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4e2c8;
+            margin: 0;
+            cursor: url(/main/Key.jpeg), auto
+        }
 
-    .container {
-      text-align: center;
-      margin-top: 20px;
-    }
+        .chest {
+            --gold: #feb21f;
+            --black: #101010;
+            --blackLight: #47372f;
+            --blackAlpha: rgba(0, 0, 0, 0.2);
 
-    .glitch {
-      font-size: 3rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      position: relative;
-      text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-        0.025em 0.04em 0 #fffc00;
-      animation: glitch 725ms infinite;
-    }
+            position: relative;
+            width: 20rem;
+            height: 15rem;
+            border: solid var(--gold);
+            border-width: 0 1rem;
+            border-radius: 0.25rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(
+               
+                var(--blackLight) 30%,
+                var(--gold) 30%,
+                var(--gold) 40%,
+                var(--blackLight) 40%,
+                var(--blackLight) 100%
+            );
+            box-shadow: 0.25rem 0.25rem var(--blackAlpha);
+        }
+        .chest::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            right: -1rem;
+            bottom: 0;
+            left: 50%;
+            border-radius: 0 0.25rem 0.25rem 0;
+            background-color: var(--blackAlpha);
+        }
+        .chest_keyholeBG {
+            position: absolute;
+            top: 40%;
+            width: 4rem;
+            height: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--gold);
+            border-radius: 0 0 50% 50% / 0 0 100% 100%;
+        }
+        .chest_keyhole {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .chest_keyhole::before {
+            content: "";
+            display: block;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background-color: var(--black);
+        }
+        .chest_keyhole::after {
+            content: "";
+            display: block;
+            width: 0.25rem;
+            height: 0.75rem;
+            margin-top: -0.25rem;
+            background-color: var(--black);
+        }
 
-    .glitch span {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    .glitch span:first-child {
-      animation: glitch 500ms infinite;
-      clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-      transform: translate(-0.04em, -0.03em);
-      opacity: 0.75;
-    }
-
-    .glitch span:last-child {
-      animation: glitch 375ms infinite;
-      clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-      transform: translate(0.04em, 0.03em);
-      opacity: 0.75;
-    }
-
-    @keyframes glitch {
-      0% {
-        text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-          0.025em 0.04em 0 #fffc00;
-      }
-      15% {
-        text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-          0.025em 0.04em 0 #fffc00;
-      }
-      16% {
-        text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
-          -0.05em -0.05em 0 #fffc00;
-      }
-      49% {
-        text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
-          -0.05em -0.05em 0 #fffc00;
-      }
-      50% {
-        text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
-          0 -0.04em 0 #fffc00;
-      }
-      99% {
-        text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
-          0 -0.04em 0 #fffc00;
-      }
-      100% {
-        text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff,
-          -0.04em -0.025em 0 #fffc00;
-      }
-    }
-    p {
-      text-align: left;
-      align-self: flex-start;
-    }
-  </style>
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1 class="glitch">
-      <span>A Letter Across Time</span>
-      <span>A Letter Across Time</span>
-      A Letter Across Time
-    </h1>
-  </div>
-  <p style="font-family:Futura">Dear Internet,
-  </p>
-  <p style="font-family:Futura">
-     My name is Sana, and like so many others, I’m a huge HUGE fan of yours. You’ve shaped my world in ways I can barely comprehend, and I couldn’t imagine living in any other era. Thanks to you, I can explore an endless universe of knowledge, connect with people across the globe, and even write letters to you like this one. But you’re not just a product of my generation—you are an entity that connects every generation. From your humble beginnings with the 
-    <a target="_blank" href="http://info.cern.ch/hypertext/WWW/TheProject.html">first website</a> ever created to the rise of social media and now the AI age, you’ve been there for all of it. You’ve grown, adapted, and sometimes struggled, but you’ve always found a way to remain central to our lives. 
-  </p>
-  <p style="font-family:Futura">
-    Now, I just want to take a moment to look back and appreciate how far you’ve come. You’ve been more than just a tool—you’ve been a witness, a guide, and sometimes even a storyteller for humanity. Let’s take a trip through your history and witness the eras that have shaped you into what you are today.
-  </p>
-  <p style="font-family:Futura">
-    Of course, we’ve witnessed some of your revolutionary moments, from the creation of the very first <a target="_blank" href="https://sixdegrees.com/">social media page</a> to uploading the first-ever video on <a target="_blank" href="https://www.youtube.com/watch?v=jNQXAC9IVRw">Youtube</a>.
-  </p>
-  <p style="font-family:Futura">
-    Then there are your less serious moments, like the debates over the color of the <a target="_blank" href="https://en.wikipedia.org/wiki/The_dress">dress</a>, <a target="_blank" href="https://www.reddit.com/r/AmItheAsshole/">AITAH</a> stories (which I still can’t believe are all true), and even the unforgettable <a target="_blank" href="https://www.youtube.com/results?search_query=best+vine+compilation">Vine</a> era, which I sadly wasn’t much a part of.
-  </p>
-  <p style="font-family:Futura">
-    That’s not to say you haven’t had serious moments, from the tragic loss of Black lives that fueled the <a target="_blank" href="https://blacklivesmatter.com/about/">BLM</a> movement and united people worldwide, to the unexpected surge in <a target="_blank" href="https://en.wikipedia.org/wiki/GameStop_short_squeeze">Gamestop</a> stock. 
-  </p>
-  <p style="font-family:Futura"> 
-    As I write this, I wonder what you’ll look like 100 years from now. Will you become even more intelligent, seamlessly blending with our daily lives through virtual realities? Or will you be the destruction of us all? Let’s be honest—you definitely have that potential. I recently learned that no single country controls you, but somehow, every greedy politician has (so far) managed to put their squabbles aside to let you remain somewhat free. But will that always be the case? 
-  </p>
-  <p style="font-family:Futura"> 
-    With the current drama over TikTok being banned, then unbanned (and probably banned again by the time someone reads this), it makes me wonder: which global powerhouse will try to lock you up? Will we eventually live in some bizarre dystopia where you’re a subscription service only the rich can afford? Who knows? At this rate, I wouldn’t be surprised if the fight for you turns into a real-life episode of Survivor—except instead of alliances and coconut-hunting, it’s just billionaires and governments wrestling over who gets to profit from your existence. 
-  </p>
-  <p style="font-family:Futura"> 
-    Nonetheless, I still have hope. Hope that the people reading this in the future see you as a tool for good—a way to foster empathy, creativity, and collaboration as you have done for me. My generation can only dream about what comes next, but we trust that you will continue to evolve, just as you always have.  
-  </p>
-  <p style="font-family:Futura">Sincerly,UR #1 FAN
-  </p>
+    <div class="chest">
+        <div class="chest_keyholeBG">
+            <div class="chest_keyhole"></div>
+        </div>
+    </div>
 </body>
 </html>
-
