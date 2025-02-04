@@ -1,8 +1,5 @@
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treasure Chest</title>
     <style>
         body {
             height: 100vh;
@@ -30,7 +27,6 @@
             justify-content: center;
             align-items: center;
             background: linear-gradient(
-               
                 var(--blackLight) 30%,
                 var(--gold) 30%,
                 var(--gold) 40%,
@@ -39,6 +35,7 @@
             );
             box-shadow: 0.25rem 0.25rem var(--blackAlpha);
         }
+
         .chest::after {
             content: "";
             display: block;
@@ -50,6 +47,7 @@
             border-radius: 0 0.25rem 0.25rem 0;
             background-color: var(--blackAlpha);
         }
+
         .chest_keyholeBG {
             position: absolute;
             top: 40%;
@@ -60,12 +58,15 @@
             align-items: center;
             background-color: var(--gold);
             border-radius: 0 0 50% 50% / 0 0 100% 100%;
+            cursor:url('Images/key.png'); 
         }
+
         .chest_keyhole {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .chest_keyhole::before {
             content: "";
             display: block;
@@ -73,7 +74,9 @@
             height: 0.75rem;
             border-radius: 50%;
             background-color: var(--black);
+            transition: background 0.3s ease-in-out;
         }
+
         .chest_keyhole::after {
             content: "";
             display: block;
@@ -81,15 +84,26 @@
             height: 0.75rem;
             margin-top: -0.25rem;
             background-color: var(--black);
+            transition: background 0.3s ease-in-out;
         }
-
     </style>
 </head>
 <body>
     <div class="chest">
-        <div class="chest_keyholeBG">
+        <div id="chest_keyholeBG" class="chest_keyholeBG" onclick="navigateToNextPage()">
             <div class="chest_keyhole"></div>
         </div>
     </div>
+
+    <script>
+        function navigateToNextPage() {
+            document.getElementById('chest_keyholeBG').classList.add('unlocked'); 
+            setTimeout(() => {
+                window.location.href = "https://shfessuh.github.io/internet_letter/letter";  
+            }, 500);
+        }
+    </script>
 </body>
 </html>
+
+
